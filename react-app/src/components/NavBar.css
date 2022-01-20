@@ -1,0 +1,9 @@
+#navBarUl{
+    display: flex;
+    list-style: none;
+    background-color: rgb(145, 235, 235);
+    height: 35px;
+    margin: 0;
+    justify-content: flex-end;
+    align-items: center;
+}
