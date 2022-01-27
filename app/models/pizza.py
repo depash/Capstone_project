@@ -8,10 +8,11 @@ class Pizza(db.Model):
     __tablename__ = 'pizzas'
 
     id = db.Column(db.Integer, primary_key=True)
-    price = db.Column(db.Integer)
-    cartId = db.Column(db.Integer, db.ForeignKey(Cart.id), nullable=False)
+    price = db.Column(db.Float(2))
+    cartId = db.Column(db.Integer, db.ForeignKey(Cart.id))
     orderId = db.Column(db.Integer, db.ForeignKey(
-        Saved_order.id), nullable=False)
+        Saved_order.id))
+    total = db.Column(db.Integer)
 
     cart_relation = db.relationship("Cart", back_populates="pizza_relation")
     order_relation = db.relationship(
@@ -24,5 +25,6 @@ class Pizza(db.Model):
             'id': self.id,
             'price': self.price,
             'cartId': self.cartId,
-            'orderId': self.orderId
+            'orderId': self.orderId,
+            'total': self.total
         }

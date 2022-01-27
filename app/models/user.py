@@ -10,7 +10,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    address = db.Column(db.String(225), nullable=False)
 
     cart_relation = db.relationship(
         "Cart", back_populates="user_relation", cascade="all, delete")
@@ -32,6 +31,5 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email,
-            'address': self.address
+            'email': self.email
         }

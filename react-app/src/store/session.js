@@ -2,9 +2,9 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 
-const setUser = (user) => ({
+const setUser = (User) => ({
   type: SET_USER,
-  payload: user
+  payload: User
 });
 
 const removeUser = () => ({
@@ -30,7 +30,7 @@ export const authenticate = () => async (dispatch) => {
 }
 
 export const login = (email, password) => async (dispatch) => {
-  const response = await fetch('/api/auth/login', {
+  const response = await fetch('/api/auth/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -43,13 +43,13 @@ export const login = (email, password) => async (dispatch) => {
 
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data))
+    const User = await response.json();
+    dispatch(setUser(User))
     return null;
   } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
+    const user = await response.json();
+    if (user.errors) {
+      return user.errors;
     }
   } else {
     return ['An error occurred. Please try again.']
@@ -58,7 +58,7 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth/logout', {
+  const response = await fetch('/api/auth/logout/', {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -70,8 +70,8 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password, address) => async (dispatch) => {
-  const response = await fetch('/api/auth/signup', {
+export const signUp = (username, email, password) => async (dispatch) => {
+  const response = await fetch('/api/auth/signup/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -79,14 +79,13 @@ export const signUp = (username, email, password, address) => async (dispatch) =
     body: JSON.stringify({
       username,
       email,
-      password,
-      address
+      password
     }),
   });
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(setUser(data))
+    const User = await response.json();
+    dispatch(setUser(User))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();

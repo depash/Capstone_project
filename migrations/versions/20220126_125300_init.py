@@ -1,8 +1,8 @@
-"""initialize tables
+"""init
 
-Revision ID: 6dd5955220bb
+Revision ID: fec2bfe3e60e
 Revises: 
-Create Date: 2022-01-20 11:08:20.737238
+Create Date: 2022-01-26 12:53:00.992501
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6dd5955220bb'
+revision = 'fec2bfe3e60e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -28,7 +28,6 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('address', sa.String(length=225), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -49,9 +48,10 @@ def upgrade():
     )
     op.create_table('pizzas',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('price', sa.Integer(), nullable=True),
-    sa.Column('cartId', sa.Integer(), nullable=False),
-    sa.Column('orderId', sa.Integer(), nullable=False),
+    sa.Column('price', sa.Float(precision=2), nullable=True),
+    sa.Column('cartId', sa.Integer(), nullable=True),
+    sa.Column('orderId', sa.Integer(), nullable=True),
+    sa.Column('total', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['cartId'], ['carts.id'], ),
     sa.ForeignKeyConstraint(['orderId'], ['saved_orders.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -68,7 +68,7 @@ def upgrade():
     )
     op.create_table('toppings',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(), nullable=True),
     sa.Column('pizzaId', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['pizzaId'], ['pizzas.id'], ),
     sa.PrimaryKeyConstraint('id')
