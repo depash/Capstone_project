@@ -1,5 +1,5 @@
 # Pizzavio - A Dominos Clone
-[Commoji](https://pizzavio.herokuapp.com)
+[Pizzavio](https://pizzavio.herokuapp.com)
 
 [Wiki](https://github.com/depash/Pizzavio/wiki)
 
