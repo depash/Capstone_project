@@ -26,16 +26,9 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
-  const body = document.getElementsByTagName('body')
-  if (!user) {
-    body.id = 'pizza'
-  }
-  else {
-    body.id = 'noPizza'
-  }
+  // if (user) {
+  //   return <Redirect to='/home' />;
+  // }
   return (
     <div id='LoginFormContainer'>
       <form id='LoginForm' onSubmit={onLogin}>

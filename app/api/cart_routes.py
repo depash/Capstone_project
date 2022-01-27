@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
-from app.models import Cart, db, Pizza, Topping
+from flask import Blueprint, jsonify, request
+from app.models import Pizza, db, Cart, Saved_order, Topping
 
 
 cart_routes = Blueprint('cart', __name__)
@@ -19,4 +19,28 @@ def getcarts(id):
     # pizza_list = [{"id": pizza.id, "price": pizza.price,
     #                "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total} for pizza in pizzas]
 
+    return jsonify({'cart': cart.to_dict(), 'pizzas': pizza_list})
+
+
+@cart_routes.route('/<int:id>/checkout/', methods=['PUT'])
+def Checkout(id):
+    data = request.json
+    pizzas = Pizza.query.filter(Pizza.cartId == id)
+    length = Pizza.query.filter(Pizza.cartId == id).count()
+    cart = Cart.query.filter(Cart.id == id).first()
+    cart.total = 0
+    Order = Saved_order(
+        total=data['price'],
+        userId=cart.userId,
+    )
+    db.session.add(Order)
+    db.session.commit()
+    for pizza in pizzas:
+        print(pizza)
+        pizza.cartId = None
+        pizza.orderId = Order.id
+    if length:
+        pizza_list = [{"id": pizza.id, "price": pizza.price,
+                       "cartId": pizza.cartId, 'orderId': pizza.orderId} for pizza in pizzas]
+    db.session.commit()
     return jsonify({'cart': cart.to_dict(), 'pizzas': pizza_list})

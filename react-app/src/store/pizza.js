@@ -54,23 +54,6 @@ export const getIndividualPizza = (pizzaId) => async (dispatch) => {
     }
 }
 
-export const Checkout = (pizzaId, price) => async (dispatch) => {
-    const response = await fetch(`/api/pizza/${pizzaId}/checkout/`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            price
-        })
-    })
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(putPizza(data))
-        return null;
-    }
-}
-
 export const ChangeingNumOfPizza = (total, pizzaId) => async (dispatch) => {
     console.log(pizzaId)
     const response = await fetch(`/api/pizza/${pizzaId}/total/`, {

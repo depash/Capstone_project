@@ -38,9 +38,9 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/home' />;
+  // }
 
   return (
     <div id='sighnupFormContainer'>

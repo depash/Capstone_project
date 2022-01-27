@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     /* box-shadow: -5px 0 7px 0px rgb(0 0 0 / 38%); */
-    border-right:solid black 3px;
+
 }
 
 
@@ -76,6 +76,8 @@
     height: 70%;
     width: 100%;
     background-color: #0672a3;
+}::-webkit-scrollbar {
+    width: 0;
 }
 #CartTotalContainer{
     height: 20%;
@@ -155,6 +157,9 @@
     list-style-type: none;
 }
 #CartItemsContainer > ul{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
@@ -173,4 +178,17 @@
     cursor: pointer;
     background-color: rgb(133, 133, 133);
     color: white;
+}
+
+.ToppingsUl{
+    list-style-type: none;
+    display: flex;
+    column-gap: 80px;
+    align-items: flex-end;
+}
+.CartItemsAndToppings{
+    padding-bottom: 10px;
+    border-bottom: #00000038 2px solid;
+    width: 100%;
+
 }

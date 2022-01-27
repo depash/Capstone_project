@@ -47,7 +47,6 @@ def DeletePizzas(id):
 def PutPizzaTotal(id):
     data = request.json
     pizza = Pizza.query.filter(Pizza.id == id).first()
-    oldTotal = pizza.total
     pizza.total = pizza.total + data['total']
     cart = Cart.query.filter(Cart.id == pizza.cartId).first()
     if data['total'] == 1:
@@ -55,7 +54,11 @@ def PutPizzaTotal(id):
     else:
         cart.total = cart.total - pizza.price
     db.session.commit()
-    return pizza.to_dict()
+    toppings = Topping.query.filter(
+        pizza.id == Topping.pizzaId).order_by(Topping.id)
+    pizza_list = {"id": pizza.id, "price": pizza.price,
+                  "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total, 'toppings': [{"id": topping.id, "name": topping.name, "pizzaId": topping.pizzaId} for topping in toppings]}
+    return pizza_list
 
 
 @pizza_routes.route('/<int:id>/', methods=['PUT'])
