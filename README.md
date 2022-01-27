@@ -5,14 +5,10 @@
 
 ## At A Glance
 Pizzavio is a full stack web application that allows only logged users to:
- - Post a server
- - The creator can Edit a posted server
- - The creator can Delete a posted server
- - Post an channel to a posted server
- - Edit an channel
- - Delete an channel
- - Post a message to a channel
- - Post a reaction to a message
+ - Create a pizza
+ - Edit a pizza
+ - delete a pizza
+ - and order all the pizzas
 
 
 ## Application Architecture
