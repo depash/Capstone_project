@@ -75,6 +75,11 @@ const HomePage = () => {
     }
     const EditPizza = async (pizzaId) => {
         await dispatch(getIndividualPizza(pizzaId));
+        setCheese(true)
+        setMushroom(true)
+        setPeperoni(true)
+        setPineapple(true)
+        console.log(pizza.toppings.length)
         for (let topping = 0; topping < pizza.toppings.length; topping++) {
             const element = pizza.toppings[topping];
             if (element === 'cheese') {
@@ -133,17 +138,17 @@ const HomePage = () => {
             {showCart ? <div id='CartContainer'>
                 <div id='CartCloseButtonContainer'><button onClick={() => { setShowCart(false) }}>x</button></div>
                 <div id='CartItemsContainer'><ul>{allpizzas.map((pizza, i) => (
-                    <div className='CartItemsAndToppings'><li className='Items' id={pizza.id}>
-                        {pizza.total + ' Pizza'}
-                        <button className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
-                        <button id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
-                        <button className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
-                        <span>{'$' + pizza.price * pizza.total}</span>
+                    <div key={pizza.id} className='CartItemsAndToppings'><li key={pizza.id} className='Items' id={pizza.id}>
+                        <span key={pizza.id + 'price'}>{pizza.total + ' Pizza'}</span>
+                        <button key={pizza.id + 'add'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
+                        <button key={pizza.id + 'edit'} id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
+                        <button key={pizza.id + 'remove'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
+                        <span key={pizza.id + 'total'}>{'$' + pizza.price * pizza.total}</span>
                     </li>
-                        <ul className='ToppingsUl'>
-                            <div>
+                        <ul className='ToppingsUl' key={pizza.id + 'toppings'}>
+                            <div key={pizza.id + 'div'}>
                                 {pizza.toppings.map((topping, i) => (
-                                    <li>{topping.name}</li>
+                                    <li key={topping.id + ' ' + topping.name}>{topping.name}</li>
                                 ))}
                             </div>
                         </ul>

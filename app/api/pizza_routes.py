@@ -54,11 +54,7 @@ def PutPizzaTotal(id):
     else:
         cart.total = cart.total - pizza.price
     db.session.commit()
-    toppings = Topping.query.filter(
-        pizza.id == Topping.pizzaId).order_by(Topping.id)
-    pizza_list = {"id": pizza.id, "price": pizza.price,
-                  "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total, 'toppings': [{"id": topping.id, "name": topping.name, "pizzaId": topping.pizzaId} for topping in toppings]}
-    return pizza_list
+    return pizza.to_dict()
 
 
 @pizza_routes.route('/<int:id>/', methods=['PUT'])
@@ -118,5 +114,4 @@ def GetonePizza(id):
         pizza.id == Topping.pizzaId).order_by(Topping.id)
     pizza_list = {"id": pizza.id, "price": pizza.price,
                   "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total, 'toppings': [{"id": topping.id, "name": topping.name, "pizzaId": topping.pizzaId} for topping in toppings]}
-
     return pizza_list
