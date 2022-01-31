@@ -34,7 +34,12 @@ I used a Flask server to handle the backend communication. With SQLAlchemy to ma
 
 ***
 
-![Making a pizza]()
+![HomePage]()
+
+
+***
+
+![HomePage]()
 
 
 ***
