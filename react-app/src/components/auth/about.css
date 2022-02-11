@@ -1,0 +1,22 @@
+.AboutContainer{
+    width: 500px;
+    height: 70px;
+    background-color: #006491;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.AboutContainer > a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    background-color: rgb(227, 24, 55);
+    color: white;
+    transition-duration: .5s;
+    transition-property: background-color,color;
+}
+.AboutContainer > a:hover{
+    cursor: pointer;
+    background-color: rgb(187, 28, 52);
+    color: rgb(214, 214, 214);
+}

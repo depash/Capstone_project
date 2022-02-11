@@ -15,6 +15,12 @@ const NavBar = () => {
     await dispatch(login('demo@aa.io', 'password'));
     return history.push(`/home`);
   };
+  // if (sessionUser) {
+  //   return <Redirect to='/home' />;
+  // }
+  // if (!sessionUser) {
+  //   return <Redirect to='/' />;
+  // }
   if (sessionUser) {
     NavButtons = (
       <>

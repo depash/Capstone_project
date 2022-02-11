@@ -21,6 +21,29 @@ def PostPizzas():
     return pizza.to_dict()
 
 
+@pizza_routes.route('/premade/', methods=['POST'])
+def PostPremadePizza():
+    data = request.json
+    pizza = Pizza(
+        price=data['price'],
+        cartId=data['cartId'],
+        total=1
+    )
+    cart = Cart.query.filter(Cart.id == data['cartId']).first()
+    cart.total = cart.total + data['price']
+    db.session.add(pizza)
+    db.session.commit()
+    NewToping = Topping(
+        name=data['Ingredient'],
+        pizzaId=pizza.id,
+    )
+    db.session.add(NewToping)
+    db.session.commit()
+    pizza_list = {"id": pizza.id, "price": pizza.price,
+                  "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total, 'toppings': [{"id": NewToping.id, "name": NewToping.name, "pizzaId": NewToping.pizzaId}]}
+    return pizza_list
+
+
 @pizza_routes.route('/<int:id>/')
 def GetPizzas(id):
     pizzas = Pizza.query.filter(Pizza.cartId == id)
