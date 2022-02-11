@@ -42,7 +42,7 @@ export const putPizzaThunk = (pizzaId, price, Ingredient, whatToDo) => async (di
 }
 
 export const getIndividualPizza = (pizzaId) => async (dispatch) => {
-    const response = await fetch(`/api/pizza/${pizzaId}/edit`, {
+    const response = await fetch(`/api/pizza/${pizzaId}/edit/`, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -54,8 +54,43 @@ export const getIndividualPizza = (pizzaId) => async (dispatch) => {
     }
 }
 
+export const makePreMadePizza = (cartId, Ingredient, price) => async (dispatch) => {
+    const response = await fetch('/api/pizza/premade/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            cartId,
+            Ingredient,
+            price
+        })
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createPizza(data))
+        return null;
+    }
+}
+
+export const makePizza = (cartId) => async (dispatch) => {
+    const response = await fetch('/api/pizza/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            cartId
+        })
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(createPizza(data))
+        return null;
+    }
+}
+
 export const ChangeingNumOfPizza = (total, pizzaId) => async (dispatch) => {
-    console.log(pizzaId)
     const response = await fetch(`/api/pizza/${pizzaId}/total/`, {
         method: 'PUT',
         headers: {
@@ -77,30 +112,12 @@ export const deletePizzaThunk = (pizzaId) => async (dispatch) => {
         method: 'DELETE'
     })
     if (response.ok) {
-        const data = await response.json()
         dispatch(deletePizza())
         return response;
     }
 }
 
-export const makePizza = (price, cartId) => async (dispatch) => {
-    console.log(cartId)
-    const response = await fetch('/api/pizza/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            price,
-            cartId
-        })
-    })
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(createPizza(data))
-        return null;
-    }
-}
+
 
 
 
