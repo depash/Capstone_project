@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import HomePage from './components/HomePage';
+import Order from './components/OrderPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,11 +37,14 @@ function App() {
         <Route path='/' exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path='/sign-up'>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/home' exact={true} >
+        <ProtectedRoute path='/home'>
           <HomePage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/Checkout'>
+          <Order />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

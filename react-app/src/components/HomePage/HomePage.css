@@ -286,3 +286,23 @@
 .PremadePizzaInfo > span{
     color: white;
 }
+#cheeseimage{
+    background-image: url(../../images/mmmmm.jpg);
+    background-size: cover;
+}
+#Peperoniimage{
+    background-image: url(../../images/1628637276856.jpeg);
+    background-size: cover;
+}
+#Mushroomimage{
+    background-image: url(../../images/Mushroom-Pizza-with-Herbs-011.jpg);
+    background-size: cover;
+}
+#ExtraCheeseimage{
+    background-image: url(../../images/7c6389fe8b56d6bab13cd5e0f6bfc6dc.jpg);
+    background-size: cover;
+}
+#Pineappleimage{
+    background-image: url(../../images/bacon-cheddar-and-pineapple-pizza-77250-1.jpeg);
+    background-size: cover;
+}

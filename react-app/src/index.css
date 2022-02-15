@@ -9,8 +9,9 @@ body{
 }
 .pizza{
     background-image: url('./images/cheesy-pepperoni-pizza-royalty-free-image-1570815711.jpg');
-    object-fit: cover;
+    background-size: 100%;
     overflow: hidden;
+    background-size: cover;
 }
 .noPizza{
     background-color: white;

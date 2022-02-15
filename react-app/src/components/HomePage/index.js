@@ -92,7 +92,7 @@ const HomePage = () => {
     }, [pizza])
 
     const checkoutCart = async () => {
-        await dispatch(Checkout(cart.id, cart.total))
+        return <Redirect to='/Checkout' />;
     }
     const EditPizza = async (pizzaId) => {
         setEditing(false)
@@ -117,16 +117,18 @@ const HomePage = () => {
         setMushroom(true)
         setPeperoni(true)
         setPineapple(true)
-        alert("Your pizza has been created")
+        setShowCart(true)
     }
     const MakeNormalPizza = async () => {
         await dispatch(makePizza(cart.id));
         dispatch(getCartThunk(user.id))
+        setShowCart(true)
     }
 
     const makePreMadePizzafunc = async (Ingredient, price) => {
         await dispatch(makePreMadePizza(cart.id, Ingredient, price))
         dispatch(getCartThunk(user.id))
+        setShowCart(true)
     }
     return (
         <div id='HomeContainer'>
@@ -135,7 +137,7 @@ const HomePage = () => {
             </div>
             <div id='PremadePizzasContainer'>
                 <div className='PremadePizza'>
-                    <div className='image'>
+                    <div className='image' id='cheeseimage'>
                     </div>
                     <div className='PremadePizzaInfo'>
                         <span>Normal Pizza</span>
@@ -144,7 +146,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className='PremadePizza'>
-                    <div className='image'>
+                    <div className='image' id='Peperoniimage'>
 
                     </div>
                     <div className='PremadePizzaInfo'>
@@ -154,7 +156,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className='PremadePizza'>
-                    <div className='image'>
+                    <div className='image' id='Mushroomimage'>
 
                     </div>
                     <div className='PremadePizzaInfo'>
@@ -164,7 +166,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className='PremadePizza'>
-                    <div className='image'>
+                    <div className='image' id='ExtraCheeseimage'>
 
                     </div>
                     <div className='PremadePizzaInfo'>
@@ -174,7 +176,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className='PremadePizza'>
-                    <div className='image'>
+                    <div className='image' id='Pineappleimage'>
 
                     </div>
                     <div className='PremadePizzaInfo'>
