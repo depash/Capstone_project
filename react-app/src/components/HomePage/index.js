@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { getCartThunk, Checkout } from '../../store/cart';
 import { ChangeingNumOfPizza, deletePizzaThunk, getIndividualPizza, makePizza, putPizzaThunk, makePreMadePizza } from '../../store/pizza';
 import './HomePage.css'
@@ -18,6 +18,7 @@ const HomePage = () => {
     const allpizzas = useSelector(state => state.cart.pizzas)
     const pizza = useSelector(state => state.pizza)
     const dispatch = useDispatch();
+    const history = useHistory();
     // const MakePizzaFunc = async (e) => {
     //     e.preventDefault();
     //     const data = await dispatch(makePizza(price, cart.id));
@@ -92,7 +93,8 @@ const HomePage = () => {
     }, [pizza])
 
     const checkoutCart = async () => {
-        return <Redirect to='/Checkout' />;
+        console.log('checkout')
+        return history.push(`/Checkout`);
     }
     const EditPizza = async (pizzaId) => {
         setEditing(false)
