@@ -3,8 +3,13 @@ import './OrderPage.css'
 
 function Order() {
     return (
-        <div className='OrdersContainer'>
-            <h1>yo</h1>
+        <div id='OrdersContainer'>
+            <div id='order'>
+
+            </div>
+            <div id='orderCost'>
+
+            </div>
         </div>
     );
 }

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import { getCartThunk, Checkout } from '../../store/cart';
 import { ChangeingNumOfPizza, deletePizzaThunk, getIndividualPizza, makePizza, putPizzaThunk, makePreMadePizza } from '../../store/pizza';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CloseIcon from '@mui/icons-material/Close';
 import './HomePage.css'
 
 const HomePage = () => {
@@ -68,8 +71,12 @@ const HomePage = () => {
             }
         }
         else {
-            await dispatch(ChangeingNumOfPizza(total, id))
-            dispatch(getCartThunk(user.id))
+            if (allpizzas[classId].total === 25 && total > 0) {
+            }
+            else {
+                await dispatch(ChangeingNumOfPizza(total, id))
+                dispatch(getCartThunk(user.id))
+            }
         }
     }
     useEffect(() => {
@@ -226,25 +233,30 @@ const HomePage = () => {
             }
             {
                 showCart ? <div id='CartContainer'>
-                    <div id='CartCloseButtonContainer'><button id='exitButtonCart' onClick={() => { setShowCart(false) }}>x</button></div>
+                    <div id='CartCloseButtonContainer'><CloseIcon onClick={() => { setShowCart(false) }} id='exitButtonCart' /></div>
                     <div id='CartItemsContainer'><ul>{allpizzas.map((pizza, i) => (
                         <div key={pizza.id} className='CartItemsAndToppings'><li key={pizza.id} className='Items' id={pizza.id}>
-                            <span key={pizza.id + 'price'}>{pizza.total + ' Pizza'}</span>
-                            <button key={pizza.id + 'add'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
-                            <button key={pizza.id + 'edit'} id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
-                            <button key={pizza.id + 'remove'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
-                            <span key={pizza.id + 'total'}>{'$' + pizza.price * pizza.total}</span>
-                        </li>
-                            <ul className='ToppingsUl' key={pizza.id + 'toppings'}>
-                                <div key={pizza.id + 'div'}>
+                            <div className='SingleItem'>
+                                <span className='itemName' key={pizza.id + 'price'}>{'Pizza'}</span>
+                                <div className='ButtonsAndQuantity'>
+                                    <span key={pizza.id + 'quantity'}>{'Quantity: ' + pizza.total}</span>
+                                    <div>
+                                        <button key={pizza.id + 'add'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
+                                        <button key={pizza.id + 'edit'} id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
+                                        <button key={pizza.id + 'remove'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
+                                    </div>
+                                </div>
+                                <ul className='ToppingsUl' key={pizza.id + 'toppings'}>
                                     {pizza.toppings.map((topping, i) => (
                                         <li key={topping.id + ' ' + topping.name}>{topping.name}</li>
                                     ))}
-                                </div>
-                            </ul>
+                                </ul>
+                            </div>
+                            <span key={pizza.id + 'total'}>{'$' + pizza.price * pizza.total}</span>
+                        </li>
                         </div>
                     ))}</ul></div>
-                    <div id='CartTotalContainer'><button id='CheckoutButton' onClick={() => { checkoutCart() }}>Checkout</button>{'Total:$' + cart.total} </div>
+                    <div id='CartTotalContainer'><button id='CheckoutButton' onClick={() => { checkoutCart() }}>Checkout</button>{'Subtotal:$' + cart.total} </div>
                 </div> : <></>
             }
         </div >

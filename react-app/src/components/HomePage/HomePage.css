@@ -24,7 +24,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.658);
-    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,24 +39,23 @@
     top:50px;
     background-color: #006491;
     height: 100%;
-    width: 300px;
+    width: 345px;
     display: flex;
     flex-direction: column;
+    z-index: 200;
     /* box-shadow: -5px 0 7px 0px rgb(0 0 0 / 38%); */
-
 }
-
 
 #cartButton{
     position: absolute;
     right: 0;
-    top:50px;
-    width: 50px;
-    height: 50px;
+    margin-top: 15px;
+    margin-right: 15px;
     border: none;
     font-size: 20px;
     background-color: white;
 }
+
 #cartButton:hover{
     cursor: pointer;
 }
@@ -85,6 +83,7 @@
     display:  flex;
     align-items: center;
     justify-content: space-evenly;
+    color:white;
 }
 #PizzaMakingModal{
     display: flex;
@@ -112,7 +111,7 @@
     background-color: rgb(185, 31, 54);
 }
 #exitButtonCart{
-    margin: 10px;
+    margin: 19px;
     border: none;
     width: 20px;
     height: 20px;
@@ -193,20 +192,23 @@
 }
 #CheckoutButton{
     border: none;
-    border-radius: 180px;
-    padding: 8px;
+    border-radius: 10px;
+    padding: 9px 42px;
+    background-color: #e31837;
+    color: white;
     transition-duration: .3s;
     transition-property: background-color, color;
 }
 #CheckoutButton:hover{
     cursor: pointer;
-    background-color: rgb(133, 133, 133);
+    background-color: #bf1730;
     color: white;
 }
 .Items{
     margin-top: 5px;
     display: flex;
     column-gap: 5px;
+    justify-content: space-around;
 }
 .Items>button{
     border: none;
@@ -222,14 +224,16 @@
 .ToppingsUl{
     list-style-type: none;
     display: flex;
-    column-gap: 80px;
+    column-gap: 5px;
     align-items: flex-end;
+    padding: 0;
+    color: #b3b3b3;
 }
 .CartItemsAndToppings{
     padding-bottom: 10px;
     border-bottom: #00000038 2px solid;
     width: 100%;
-
+    color: #b3b3b3;
 }
 #MakePizzaButtonContainer{
     width: 100%;
@@ -305,4 +309,51 @@
 #Pineappleimage{
     background-image: url(../../images/bacon-cheddar-and-pineapple-pizza-77250-1.jpeg);
     background-size: cover;
+}
+.SingleItem{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.ButtonsAndQuantity > span{
+    padding-right: 10px;
+    border-right: solid 1px grey;
+    color:#b3b3b3;
+}
+.ButtonsAndQuantity {
+    display: flex;
+
+}
+.ButtonsAndQuantity >div {
+   margin-left: 1px;
+}
+
+.ButtonsAndQuantity >div > button {
+    background-color: #0672a3;
+    border: solid 1px #fff;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 6px;
+    margin-right: 3px;
+    transition-duration: .2s;
+    transition-property: border,color;
+ }
+ .ButtonsAndQuantity >div > button:hover {
+    cursor: pointer;
+    border: solid 1px rgb(212, 212, 212);
+    color: rgb(212, 212, 212);
+ }
+ .ButtonsAndQuantity >div > button:first-child:hover {
+    cursor: pointer;
+    border: solid 1px rgb(176, 255, 189);
+    color: rgb(176, 255, 189);
+ }
+ .ButtonsAndQuantity >div > button:last-child:hover {
+    cursor: pointer;
+    border: solid 1px rgb(255, 130, 130);
+    color: rgb(255, 130, 130);
+ }
+.itemName{
+    font-weight: bold;
+    color: #f7f7f7;
 }
