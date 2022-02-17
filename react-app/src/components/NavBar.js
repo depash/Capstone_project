@@ -1,5 +1,5 @@
 import { React } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../store/session';
@@ -21,9 +21,18 @@ const NavBar = () => {
   // if (!sessionUser) {
   //   return <Redirect to='/' />;
   // }
+  const OrdersButton = async (e) => {
+    console.log('here')
+    return history.push(`/Orders`);
+  };
   if (sessionUser) {
     NavButtons = (
       <>
+        <li>
+          <button onClick={(e) => { OrdersButton() }}>
+            Orders
+          </button>
+        </li>
         <li>
           <LogoutButton />
         </li>

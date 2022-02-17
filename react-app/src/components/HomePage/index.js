@@ -100,8 +100,7 @@ const HomePage = () => {
     }, [pizza])
 
     const checkoutCart = async () => {
-        console.log('checkout')
-        return history.push(`/Checkout`);
+        await dispatch(Checkout(cart.id, cart.total))
     }
     const EditPizza = async (pizzaId) => {
         setEditing(false)

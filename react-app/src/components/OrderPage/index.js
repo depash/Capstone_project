@@ -4,11 +4,18 @@ import './OrderPage.css'
 function Order() {
     return (
         <div id='OrdersContainer'>
-            <div id='order'>
+            <div id='orderContainer'>
+                <div id='orderName'>
+                    <h1>CART</h1>
+                </div>
+                <div id='order'>
 
+                </div>
             </div>
-            <div id='orderCost'>
+            <div id='orderCostContainer'>
+                <div id='orderCost'>
 
+                </div>
             </div>
         </div>
     );
