@@ -140,6 +140,11 @@ const HomePage = () => {
     }
     return (
         <div id='HomeContainer'>
+            {
+                !showCart ? <button id='cartButton' onClick={() => { setShowCart(true) }}>
+                    <i class="fas fa-shopping-cart"></i>
+                </button> : <></>
+            }
             <div id='MakePizzaButtonContainer'>
                 <button id='MakePizzaButton' onClick={() => { OpenModal() }}>Make Pizza</button>
             </div>
@@ -224,11 +229,6 @@ const HomePage = () => {
                         <div id='TotalAndSubmitbutton'>{editing ? <button onClick={() => { SubmitPizzaButton() }}>Make Pizza</button> : <button onClick={() => { closeUpdateModel() }}>Update Pizza</button>}<div>{'Total:$' + pizza.price}</div></div>
                     </div>
                 </div> : <></>
-            }
-            {
-                !showCart ? <button id='cartButton' onClick={() => { setShowCart(true) }}>
-                    <i class="fas fa-shopping-cart"></i>
-                </button> : <></>
             }
             {
                 showCart ? <div id='CartContainer'>

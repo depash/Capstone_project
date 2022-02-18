@@ -1,34 +1,67 @@
 #OrdersContainer{
     display: flex;
-    height: 100%;
-    width: 100%;
-}
-#orderContainer{
-    width: 70%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-}
-#orderCostContainer{
-    width: 30%;
-    height: 100%;
-    display: flex;
+    row-gap: 10px;
+    margin-top: 10px;
     align-items: center;
-    justify-content: center;
 }
-#orderName{
-    min-width: 597px;
-    height: 55px;
+#orders{
+    width: 95%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0;
+    flex-wrap: wrap;
 }
-#order{
-    min-width: 600px;
-    height: 500px;
-    border: 1px solid #555555;
+.order{
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    height: fit-content;
+    background-color: lightgrey;
+    padding: 10px;
 }
-#orderCost{
-    min-width: 200px;
-    height: 278px;
-    border: 1px solid #555555;
+.ReorderButtonContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.ReorderButtonContainer>button{
+    width: 120px;
+    height: 35px;
+    border: none;
+    background-color: rgb(227, 24, 55);
+    color: white;
+    transition-duration: .5s;
+    transition-property: background-color;
+}
+.ReorderButtonContainer>button:hover{
+    cursor: pointer;
+    background-color: rgb(185, 31, 54);
+}
+.InfoAndDropdownContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 18px;
+}
+.InfoAndDropdownContainer > div:first-child{
+    display: flex;
+    justify-content: space-between;
+}
+.InfoAndDropdownContainer > div > span:last-child{
+    margin-right: 10px;
+}
+.DropDownLink{
+    color: rgb(0 100 145);
+}
+.DropDownLink:hover{
+    cursor: pointer;
+}
+.InfoAndDropdownContainer > div:last-child{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: scroll;
 }

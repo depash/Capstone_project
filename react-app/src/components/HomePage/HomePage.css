@@ -1,11 +1,4 @@
-#HomeContainer{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-}
+
 #MakePizzaButton{
     padding: 20px;
     width: 300px;
@@ -53,7 +46,7 @@
     margin-right: 15px;
     border: none;
     font-size: 20px;
-    background-color: white;
+    background-color: transparent;
 }
 
 #cartButton:hover{
@@ -74,8 +67,6 @@
     height: 70%;
     width: 100%;
     background-color: #0672a3;
-}::-webkit-scrollbar {
-    width: 0;
 }
 #CartTotalContainer{
     height: 20%;
@@ -244,17 +235,14 @@
 }
 
 #PremadePizzasContainer{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 54px;
-    column-gap: 20px;
-    justify-content: center;
-    overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
     margin-bottom: 10px;
+    margin-top: 20px;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
 }
 
 .PremadePizza{

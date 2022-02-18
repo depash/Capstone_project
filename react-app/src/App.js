@@ -43,7 +43,7 @@ function App() {
         <ProtectedRoute path='/home'>
           <HomePage />
         </ProtectedRoute>
-        <ProtectedRoute path='/Checkout'>
+        <ProtectedRoute path='/Orders'>
           <Order />
         </ProtectedRoute>
       </Switch>
