@@ -30,7 +30,7 @@ function Order() {
                     <li key={order.id} className='order'>
                         <div className='InfoAndDropdownContainer'>
                             <div>
-                                <span className='OrderNum'>{'Order#' + i}</span>
+                                <span className='OrderNum'>{'Order#' + (i + 1)}</span>
                                 <span >{"Price: $" + order.total}</span>
                             </div>
                             <div>
