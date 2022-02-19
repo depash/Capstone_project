@@ -63,5 +63,19 @@
     display: flex;
     flex-direction: column;
     max-height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar {
+    width: 4px;
+  }
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar-track {
+    background: rgba(131, 131, 131, 0.404);
+    border-radius: 100px;
+  }
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: #545454;
+  }
