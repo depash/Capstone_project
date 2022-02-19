@@ -100,7 +100,7 @@ const HomePage = () => {
     }, [pizza])
 
     const checkoutCart = async () => {
-        if (cart.price !== 0) {
+        if (cart.total !== 0) {
             await dispatch(Checkout(cart.id, cart.total))
         }
     }
