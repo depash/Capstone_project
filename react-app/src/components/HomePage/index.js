@@ -100,7 +100,9 @@ const HomePage = () => {
     }, [pizza])
 
     const checkoutCart = async () => {
-        await dispatch(Checkout(cart.id, cart.total))
+        if (cart.price !== 0) {
+            await dispatch(Checkout(cart.id, cart.total))
+        }
     }
     const EditPizza = async (pizzaId) => {
         setEditing(false)
