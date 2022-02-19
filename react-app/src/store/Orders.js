@@ -22,8 +22,8 @@ export const getPastOrdersThunk = (userId) => async (dispatch) => {
     }
 }
 
-export const ReOrder = (orderId) => async (dispatch) => {
-    const response = await fetch(`/api/order`, {
+export const ReOrder = (orderId, userId) => async (dispatch) => {
+    const response = await fetch(`/api/order/${userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

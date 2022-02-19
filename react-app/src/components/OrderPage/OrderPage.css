@@ -19,7 +19,7 @@
     width: 100%;
     min-height: 60px;
     height: fit-content;
-    background-color: lightgrey;
+    background-color: #c0ebff;
     padding: 10px;
 }
 .ReorderButtonContainer{
@@ -49,6 +49,9 @@
 .InfoAndDropdownContainer > div:first-child{
     display: flex;
     justify-content: space-between;
+}
+.OrderNum{
+    color: #006491;
 }
 .InfoAndDropdownContainer > div > span:last-child{
     margin-right: 10px;

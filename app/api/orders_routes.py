@@ -23,3 +23,22 @@ def getOrders(id):
     #                "cartId": pizza.cartId, 'orderId': pizza.orderId, 'total': pizza.total} for pizza in pizzas]
 
     return jsonify({'orders': orders_list, 'pizzas': pizza_list})
+
+
+@order_routes.route('/<int:id>', methods=['PUT'])
+def re_order(id):
+    data = request.json
+    pizzas = Pizza.query.filter(Pizza.orderId == data['orderId'])
+    length = Pizza.query.filter(Pizza.orderId == data['orderId']).count()
+    order = Saved_order.query.filter(Saved_order.id == data['orderId']).first()
+    cart = Cart.query.filter(Cart.id == id).first()
+    for pizza in pizzas:
+        cart.total += pizza.price
+        pizza.cartId = cart.id
+        pizza.orderId = None
+    if length:
+        pizza_list = [{"id": pizza.id, "price": pizza.price,
+                       "cartId": pizza.cartId, 'orderId': pizza.orderId} for pizza in pizzas]
+    db.session.delete(order)
+    db.session.commit()
+    return jsonify({'cart': cart.to_dict(), 'pizzas': pizza_list})

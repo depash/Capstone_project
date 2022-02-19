@@ -139,66 +139,7 @@ const HomePage = () => {
         setShowCart(true)
     }
     return (
-        <div id='HomeContainer'>
-            {
-                !showCart ? <button id='cartButton' onClick={() => { setShowCart(true) }}>
-                    <i class="fas fa-shopping-cart"></i>
-                </button> : <></>
-            }
-            <div id='MakePizzaButtonContainer'>
-                <button id='MakePizzaButton' onClick={() => { OpenModal() }}>Make Pizza</button>
-            </div>
-            <div id='PremadePizzasContainer'>
-                <div className='PremadePizza'>
-                    <div className='image' id='cheeseimage'>
-                    </div>
-                    <div className='PremadePizzaInfo'>
-                        <span>Normal Pizza</span>
-                        <span>price: $10</span>
-                        <button onClick={() => { MakeNormalPizza() }}>Buy</button>
-                    </div>
-                </div>
-                <div className='PremadePizza'>
-                    <div className='image' id='Peperoniimage'>
-
-                    </div>
-                    <div className='PremadePizzaInfo'>
-                        <span> Peperoni Pizza</span>
-                        <span>price: $12</span>
-                        <button onClick={() => { makePreMadePizzafunc('peperoni', 12) }}>Buy</button>
-                    </div>
-                </div>
-                <div className='PremadePizza'>
-                    <div className='image' id='Mushroomimage'>
-
-                    </div>
-                    <div className='PremadePizzaInfo'>
-                        <span>Mushroom Pizza</span>
-                        <span>price: $12</span>
-                        <button onClick={() => { makePreMadePizzafunc('mushroom', 12) }}>Buy</button>
-                    </div>
-                </div>
-                <div className='PremadePizza'>
-                    <div className='image' id='ExtraCheeseimage'>
-
-                    </div>
-                    <div className='PremadePizzaInfo'>
-                        <span>Extra Cheese Pizza</span>
-                        <span>price: $11</span>
-                        <button onClick={() => { makePreMadePizzafunc('cheese', 11) }}>Buy</button>
-                    </div>
-                </div>
-                <div className='PremadePizza'>
-                    <div className='image' id='Pineappleimage'>
-
-                    </div>
-                    <div className='PremadePizzaInfo'>
-                        <span>Pineapple Pizza</span>
-                        <span>price: $12</span>
-                        <button onClick={() => { makePreMadePizzafunc('pineapple', 12) }}>Buy</button>
-                    </div>
-                </div>
-            </div>
+        <>
             {
                 showModal ? <div id='PizzaMakingModalContainer'>
                     <div id='PizzaMakingModal'>
@@ -230,35 +171,97 @@ const HomePage = () => {
                     </div>
                 </div> : <></>
             }
-            {
-                showCart ? <div id='CartContainer'>
-                    <div id='CartCloseButtonContainer'><CloseIcon onClick={() => { setShowCart(false) }} id='exitButtonCart' /></div>
-                    <div id='CartItemsContainer'><ul>{allpizzas.map((pizza, i) => (
-                        <div key={pizza.id} className='CartItemsAndToppings'><li key={pizza.id} className='Items' id={pizza.id}>
-                            <div className='SingleItem'>
-                                <span className='itemName' key={pizza.id + 'price'}>{'Pizza'}</span>
-                                <div className='ButtonsAndQuantity'>
-                                    <span key={pizza.id + 'quantity'}>{'Quantity: ' + pizza.total}</span>
-                                    <div>
-                                        <button key={pizza.id + 'add'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
-                                        <button key={pizza.id + 'edit'} id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
-                                        <button key={pizza.id + 'remove'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
-                                    </div>
-                                </div>
-                                <ul className='ToppingsUl' key={pizza.id + 'toppings'}>
-                                    {pizza.toppings.map((topping, i) => (
-                                        <li key={topping.id + ' ' + topping.name}>{topping.name}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <span key={pizza.id + 'total'}>{'$' + pizza.price * pizza.total}</span>
-                        </li>
+            <div id='HomeContainer'>
+                {
+                    !showCart ? <button id='cartButton' onClick={() => { setShowCart(true) }}>
+                        <i className="fas fa-shopping-cart"></i>
+                    </button> : <></>
+                }
+                <div id='MakePizzaButtonContainer'>
+                    <button id='MakePizzaButton' onClick={() => { OpenModal() }}>Make Pizza</button>
+                </div>
+                <div id='PremadePizzasContainer'>
+                    <div className='PremadePizza'>
+                        <div className='image' id='cheeseimage'>
                         </div>
-                    ))}</ul></div>
-                    <div id='CartTotalContainer'><button id='CheckoutButton' onClick={() => { checkoutCart() }}>Checkout</button>{'Subtotal:$' + cart.total} </div>
-                </div> : <></>
-            }
-        </div >
+                        <div className='PremadePizzaInfo'>
+                            <span>Normal Pizza</span>
+                            <span>price: $10</span>
+                            <button onClick={() => { MakeNormalPizza() }}>Buy</button>
+                        </div>
+                    </div>
+                    <div className='PremadePizza'>
+                        <div className='image' id='Peperoniimage'>
+
+                        </div>
+                        <div className='PremadePizzaInfo'>
+                            <span> Peperoni Pizza</span>
+                            <span>price: $12</span>
+                            <button onClick={() => { makePreMadePizzafunc('peperoni', 12) }}>Buy</button>
+                        </div>
+                    </div>
+                    <div className='PremadePizza'>
+                        <div className='image' id='Mushroomimage'>
+
+                        </div>
+                        <div className='PremadePizzaInfo'>
+                            <span>Mushroom Pizza</span>
+                            <span>price: $12</span>
+                            <button onClick={() => { makePreMadePizzafunc('mushroom', 12) }}>Buy</button>
+                        </div>
+                    </div>
+                    <div className='PremadePizza'>
+                        <div className='image' id='ExtraCheeseimage'>
+
+                        </div>
+                        <div className='PremadePizzaInfo'>
+                            <span>Extra Cheese Pizza</span>
+                            <span>price: $11</span>
+                            <button onClick={() => { makePreMadePizzafunc('cheese', 11) }}>Buy</button>
+                        </div>
+                    </div>
+                    <div className='PremadePizza'>
+                        <div className='image' id='Pineappleimage'>
+
+                        </div>
+                        <div className='PremadePizzaInfo'>
+                            <span>Pineapple Pizza</span>
+                            <span>price: $12</span>
+                            <button onClick={() => { makePreMadePizzafunc('pineapple', 12) }}>Buy</button>
+                        </div>
+                    </div>
+                </div>
+                {
+                    showCart ? <div id='CartContainer'>
+                        <div id='CartCloseButtonContainer'><CloseIcon onClick={() => { setShowCart(false) }} id='exitButtonCart' /></div>
+                        <div id='CartItemsContainer'><ul>{allpizzas.map((pizza, i) => (
+                            <div key={pizza.id} className='CartItemsAndToppings'><li key={pizza.id} className='Items' id={pizza.id}>
+                                <div className='SingleItem'>
+                                    <span className='itemName' key={pizza.id + 'price'}>{'Pizza'}</span>
+                                    <div className='ButtonsAndQuantity'>
+                                        <span key={pizza.id + 'quantity'}>{'Quantity: ' + pizza.total}</span>
+                                        <div>
+                                            <button key={pizza.id + 'add'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(1, e.target.id, e.target.className) }}>Add</button>
+                                            <button key={pizza.id + 'edit'} id={pizza.id} onClick={(e) => { EditPizza(e.target.id) }}>Edit</button>
+                                            <button key={pizza.id + 'remove'} className={i} id={pizza.id} onClick={(e) => { ChangeNumOfPizza(-1, e.target.id, e.target.className) }}>Remove</button>
+                                        </div>
+                                    </div>
+                                    <ul className='ToppingsUl' key={pizza.id + 'toppings'}>
+                                        {pizza.toppings.map((topping, i) => (
+                                            <li key={topping.id + ' ' + topping.name}>{topping.name}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <span key={pizza.id + 'total'}>{'$' + pizza.price * pizza.total}</span>
+                            </li>
+                            </div>
+                        ))}</ul></div>
+                        <div id='CartTotalContainer'><button id='CheckoutButton' onClick={() => { checkoutCart() }}>Checkout</button>{'Subtotal:$' + cart.total} </div>
+                    </div> : <></>
+                }
+
+            </div >
+        </>
     );
 }
 
