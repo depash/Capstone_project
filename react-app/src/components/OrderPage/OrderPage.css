@@ -1,0 +1,84 @@
+#OrdersContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+#orders{
+    width: 95%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0;
+    flex-wrap: wrap;
+}
+.order{
+    display: flex;
+    width: 100%;
+    min-height: 60px;
+    height: fit-content;
+    background-color: #c0ebff;
+    padding: 10px;
+}
+.ReorderButtonContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+.ReorderButtonContainer>button{
+    width: 120px;
+    height: 35px;
+    border: none;
+    background-color: rgb(227, 24, 55);
+    color: white;
+    transition-duration: .5s;
+    transition-property: background-color;
+}
+.ReorderButtonContainer>button:hover{
+    cursor: pointer;
+    background-color: rgb(185, 31, 54);
+}
+.InfoAndDropdownContainer{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 18px;
+}
+.InfoAndDropdownContainer > div:first-child{
+    display: flex;
+    justify-content: space-between;
+}
+.OrderNum{
+    color: #006491;
+}
+.InfoAndDropdownContainer > div > span:last-child{
+    margin-right: 10px;
+}
+.DropDownLink{
+    color: rgb(0 100 145);
+}
+.DropDownLink:hover{
+    cursor: pointer;
+}
+.InfoAndDropdownContainer > div:last-child{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar {
+    width: 4px;
+  }
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar-track {
+    background: rgba(131, 131, 131, 0.404);
+    border-radius: 100px;
+  }
+
+.InfoAndDropdownContainer > div:last-child::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: #545454;
+  }
