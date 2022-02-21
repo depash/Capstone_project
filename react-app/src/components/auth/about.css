@@ -9,14 +9,14 @@
 .AboutContainer > a{
     text-decoration: none;
     color: black;
-    padding: 10px;
-    background-color: rgb(227, 24, 55);
-    color: white;
+    font-size: 30px;
     transition-duration: .5s;
     transition-property: background-color,color;
 }
+.AboutContainer > a> i{
+
+}
 .AboutContainer > a:hover{
     cursor: pointer;
-    background-color: rgb(187, 28, 52);
     color: rgb(214, 214, 214);
 }
