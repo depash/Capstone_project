@@ -15,14 +15,7 @@ const NavBar = () => {
     await dispatch(login('demo@aa.io', 'password'));
     return history.push(`/home`);
   };
-  // if (sessionUser) {
-  //   return <Redirect to='/home' />;
-  // }
-  // if (!sessionUser) {
-  //   return <Redirect to='/' />;
-  // }
   const OrdersButton = async (e) => {
-    console.log('here')
     return history.push(`/Orders`);
   };
   if (sessionUser) {
